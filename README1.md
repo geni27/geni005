@@ -1,8 +1,9 @@
 # STRUKTURA E TE DHENAVE NE C++
 
-## KODI I DOKUMENTUAR 
+## KODI I DOKUMENTUAR
+
 #include <iostream>
-#include <cstdlib>  // Për funksionet e exit()
+#include <cstdlib>  
 using namespace std;
 
 /*
