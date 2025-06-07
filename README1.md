@@ -169,41 +169,28 @@ Klasa Stack përmban metodat kryesore:
 
 ~push(int value): Kjo metodë krijon një nyje të re me vlerën e dhënë dhe e vendos atë në krye të stivës. 
 Ky proces është shumë "efikas" sepse operacioni realizohet me kompleksitet të ulët O(1). 
-Në këtë metodë, nyja e re lidhet duke vendosur pointer-in next të saj për të tregon kryen aktual, 
-dhe më pas kryeti përditësohet.
-
 ~pop(): Kur thirret pop, metoda kontrollon nëse stiva është bosh (përdor funksionin empty()). 
 Nëse stiva jo është bosh, ajo heq nyjen në krye (ruan një pointer të përkohshëm për të fshirë dhe merr vlerën e saj), 
 përditëson kryen duke e zgjedhur nyjen e mëposhtme dhe pastaj çlirohet hapësira përmes delete. 
 Ky operacion gjithashtu funksionon në O(1).
-
-
 ~top(): Kjo metodë kthen vlerën e elementit në krye pa e hequr. 
 Ai kontrollon që stiva të mos jetë bosh, duke ndihmuar kështu në përdorimin e sigurt të këtyre vlerave.
-
-
 ~empty(): Kthen një vlerë booleane (true ose false) që tregon nëse stiva është bosh (p.sh., nëse pointer-i topNode është nullptr).
-
-
 ~print(): Kjo metodë përshkon lidhjet nga nyja e kryesë deri sa të mbërrijë në fund dhe afishon të dhënat, duke treguar renditjen nga krya (top) drejt fundit. 
 Ky operacion frymëzon konceptin LIFO,sepse elementët afishohen në rendin e kundërt të futjes së tyre.
 
 2. Arsyetimi Pas Zgjedhjes së Struktures
 a. Pse Stiva?
-
-Parimi LIFO është i përshtatshëm: Shumë probleme praktike kërkojnë radhitjen e operacioneve në mënyrë të tillë që elementi i fundit i futur të jetë
+~Parimi LIFO është i përshtatshëm: Shumë probleme praktike kërkojnë radhitjen e operacioneve në mënyrë të tillë që elementi i fundit i futur të jetë
  i pari që përdoret gjatë kthimit (siç ndodh në menaxhimin e thirrjeve të funksioneve dhe vlerësimin e shprehjeve postfix). 
 Ky parim është natyror për stivat.
-
-Efikasitet Operacional: Operacionet kryesore të stivës (push, pop, top) realizohen në kohë konstante,
+~Efikasitet Operacional: Operacionet kryesore të stivës (push, pop, top) realizohen në kohë konstante,
  O(1), që e bën strukturën shumë efikase për aplikime ku nevojiten operacione të shpeshta ditorë mbi të dhëna.
 
 b. Përse Përdorim Linked List?
-
-Fleksibilitet Dinamik: Implementimi me linked list lejon që stiva të rritet në mënyrë dinamike pa qenë e kufizuar nga një madhësi fikse. 
+~Fleksibilitet Dinamik: Implementimi me linked list lejon që stiva të rritet në mënyrë dinamike pa qenë e kufizuar nga një madhësi fikse. 
 Ndryshe nga array-t, ku madhësia fillestare është e paracaktuar, linked list lejon që të krijohen nyje të reja sipas nevojës.
-
-Menaxhimi i Kujtesës: Duke përdorur new dhe delete, implementimi me linked list thekson aftësinë për të menaxhuar manual kujtesën në C++. 
+~Menaxhimi i Kujtesës: Duke përdorur new dhe delete, implementimi me linked list thekson aftësinë për të menaxhuar manual kujtesën në C++. 
 Kjo është një aftësi themelore për studentët që po mësojnë strukturat e të dhënave.
 
 ## SI PERDORET STRUKTURA NE ZGJIDHJEN E PROBLEMIT ?
@@ -212,9 +199,7 @@ Le të shpjegojmë se si bëhet kjo hap pas hapi:
 
 1).Ruajtja e Operandëve: Në një shprehje postfix, operandët (numrat) lexohen në rendin e tyre dhe futen në stivë duke përdorur operacionin push. 
 Për shembull, nëse lexoni “3” dhe “4”, ato futen në stivë, kështu që stiva ruan:
-Top: 4
-Më poshtë: 3
-Kështu, operandët ruhen në rendin që i vendosim, dhe elementi më i fundit i futur është në krye.
+Top: 4  Më poshtë: 3.Kështu, operandët ruhen në rendin që i vendosim, dhe elementi më i fundit i futur është në krye.
 
 2).Heqja e Operandëve dhe Zbatimi i Operatorëve: Kur në shprehje haset një operator (p.sh. “+” ose “*”), 
 stiva përdoret për të marrë operandët e nevojshëm. Kjo bëhet me operacionin pop, i cili heq elementët nga krye, 
@@ -242,101 +227,57 @@ Siguron që operandët dhe rezultatet ndërmjetësisht ruhen në një mënyrë d
 ku renditja e operacioneve varet nga rendi i futjes së operandëve.
 Efikasiteti: Operacionet kryesore bëhen në kohë konstante, që garanton që edhe shprehje me shumë operandë dhe operatorë të përpunohen shpejt.
 
-Në përmbledhje, struktura e stivës përdoret në zgjidhjen e problemit përmes një algoritmi të thjeshtë:
-Operandët futen në stivë me push()
-Kur haset një operator, stiva kryen pop() për të marrë operandët, zbatohet operacioni, dhe rezultati pushohet përsëri
-Rezultati final i shprehjes ruhet në krye të stivës dhe merret me top()
-Ky proces e bën stivën zgjedhje ideale për zgjidhjen e problemeve që kërkojnë përpunimin e 
-të dhënave në një rend të caktuar, si p.sh., vlerësimi i shprehjeve postfix.
-
 ## VESHTIRESITE DHE TEJKALIMI I TYRE 
 ### Menaxhimi i Kujtesës Dinamike
-
 ***Vështirësitë:
-
-1)Alokimi i Memorisë: Kur krijohen nyje të reja për linked list duke përdorur operatorin new, duhet të sigurohemi që çdo nyje të alokohet siç duhet. 
+1)Alokimi i Memories: Kur krijohen nyje të reja për linked list duke përdorur operatorin new, duhet të sigurohemi që çdo nyje të alokohet siç duhet. 
 Nëse harron të çlirosh kujtesën me delete, do të hasësh probleme si “memory leaks” (humbje kujtesë).
-
 2)Çlirimi i Kujtesës: Në operacionet si pop(),është e rëndësishme të çlironi kujtesën për nyjën që keni hequr. 
 Nëse kjo nuk bëhet, do të krijohen probleme me pamjaftueshmërinë e kujtesës dhe mund të ndodhin gabime gjatë ekzekutimit.
 ***Zgjidhjet:
-
 1)Kontrolli i Rregullt i Boshllëkut: Para se të kryhet një operacion që përdor pointer-a (si për shembull në pop() ose top()), 
 kontrollohet nëse stiva është bosh. Kjo shmang përdorimin e pointer-eve të papërdorur ose të jo inicializuar.
-
-
 2)Përdorimi i new dhe delete: Në metodën push(), përdorim new për të krijuar një nyje të re dhe, në metodën pop(), 
 përdorim delete për të çliruar kujtesën për nyjën e fshirë. Kjo siguron që secila nyje që krijohet të ndikojë në kujtesë vetëm deri sa të jetë e nevojshme.
 
 ### Përdorimi i Pointer-ave dhe Siguria e Aksesimit të të Dhënave
 ***
 Vështirësitë:
-
 1)Pointer-e të Pa inicializuara: Nëse një pointer si topNode në stivë nuk inicializohet si nullptr në fillim, 
 më vonë do të shkaktojë gabime gjatë operacioneve si pop() ose top(), 
 sepse do të shkaktohet aksesimi në një adresë të pavlefshme (undefined behavior).
-
-
 2)Aksesimi i Elementëve të Çliruar: Në operacionin pop(), nëse nuk kontrollohet që stiva të mos jetë bosh,
  përpiqet të akcesohet një nyje që është e papërdorur ose është çliruar, duke shkaktuar gabime runtime 
 (p.sh., segmentation fault).
-
-***
 Zgjidhjet:
-
 1)Inicializimi i Pointer-ave: Sigurohemi që pointer-at kryesorë si topNode do të inicializohen në fillim si nullptr, 
 duke garantuar që operacionet e mëvonshme të kontrollojnë nëse struktura është bosh.
-
 2)Kontrolli i Boshllëkut në Metodat Kritike: Në metodat pop() dhe top(), përdorim funksionin empty() për të kontrolluar 
 nëse stiva është bosh para se të kryejmë ndonjë operacion aksesi.
 
-3)Testimi i Gjithë Rastave të Ekzekutimit: Implementuam testime me skenarë të ndryshëm (si stiva bosh, radhët e operacioneve të ndryshme, etj.) 
-për të kapur çdo situatë ekstreme dhe për të siguruar që çdo gjë ndërtohet në mënyrë të sigurtë.
-
 ### Modulariteti dhe Organizimi i Kodit
 ***Vështirësitë:
-
 1)Ndërhyrja midis Modulave: Në një projekt të tillë, ndarja e funksioneve në module të pavarura 
 (p.sh., një klasë për linked list, një klasë për stack) duhet të bëhet në mënyrë të tillë që secili modul të ketë funksionet 
 e tij të qarta dhe të ndërlidhura në mënyrë të qartë.
-
 2)Qartësia dhe mirëmbajtja e Kodit: Kur punon me struktura që përdorin pointer-a, kodet mund të bëhen të ndërlikuara nëse nuk
  janë shkruar me komente të mjaftueshme dhe nëse logjika nuk ndahen në funksione të pavarura.
-
-***
 Zgjidhjet:
-
 1)Strukturimi Modular i Kodit: Kemi ndarë implementimet e të dhënave në klase të veçanta (p.sh., klasa Stack) 
 dhe i kemi organizuar funksionet e saj (push, pop, top, empty, print) në mënyrë që të jenë ndërthurur në një modul të vetëm.
-
-2)Komentimi i Kodit: Çdo pjesë e kodit është komentuar qartë për të shpjeguar se çfarë bën seanca secila metodë, 
-çfarë operacioni kryen dhe pse është e rëndësishme brenda projektit
-. Kjo ndihmon që përdoruesit dhe bashkëpunëtorët të kuptojnë lehtësisht logjikën dhe të zbulojnë gabime.
-
-4)Testimi i moderuar dhe integrimi i shembujve praktik: Në funksionin main() janë përfshirë shembuj praktikë që demonstrojnë mënyrën 
+2)Testimi i moderuar dhe integrimi i shembujve praktik: Në funksionin main() janë përfshirë shembuj praktikë që demonstrojnë mënyrën 
 se si se përdorin operacionet kryesore si push(), pop(), etj., duke garantuar kështu se struktura funksionon sipas pritshmërive.
 
 ### Integrimi në Zgjidhjen e Problemit Praktik: Vlerësimi i një Shprehjeje Postfix
-
 ***Sfida:
-
 1)Interpretimi i Shprehjeve Postfix: Në një shprehje postfix nuk përdoren kllapa, kështu që mënyra e ndarjes së operandëve
  dhe operatorëve duhet të bëhet në mënyrë automatike duke ruajtur rendin e duhur të operacioneve.
-
-
 2)Menaxhimi i Operandëve dhe Operatorëve: Shtimi i operandëve në stivë dhe përdorimi i operacioneve aritmetike marrë nga stiva duhet të bëhet me vëmendje,
  për të siguruar se operandëve të duhur popohen në mënyrë të saktë dhe se rezultati i secilit operacion pushohet përsëri në stivë.
-
-***
 Zgjidhja:
-
 1)Përdorimi i operacioneve push dhe pop: Operacionet bazë të stivës janë shumë të shpejta dhe realizohen në O(1), duke siguruar efikasitet në zbatim. 
 Operandët shtohen në mënyrë të drejtpërdrejtë dhe kur operatorët arrijnë, stiva përdoret për të kapur operandët në rendin e duhur.
-
-2)Shpjegimi i hapave përmes komentimeve: Në kodin e shembullit të shprehjes postfix, secili hap është shkruar me detaje nëpërmjet komenteve, 
-duke përshkruar se si operacionet kryhen: futimi i operandëve, zbatimi i operatorëve dhe mosfundimi me rezultatin final.
-
-3)Testimi me shembuj të qarta: Në main(), shembulli praktik i shprehjes postfix ti lejon të shihni se si rezultati final (14) merren pas ndjekjes së hapave të push/pop,
+2)Testimi me shembuj të qarta: Në main(), shembulli praktik i shprehjes postfix ti lejon të shihni se si rezultati final (14) merren pas ndjekjes së hapave të push/pop,
  duke demonstruar se struktura e stivës zgjidh problemin në mënyrë të saktë dhe të mirëorganizuar.
 
  ## PUNOI: JURGEN CENMURATI   IE 105
