@@ -150,14 +150,13 @@ int main() {
 ## STRUKTURA E IMPLEMENTUAR DHE ARSYETIMI PAS ZGJEDHJES SE STRUKTURES:
 Përmbledhje e Implementimit të Stivës
 
-a. Struktura Node
+a. Struktura Node:
 Në kodin tonë kemi krijuar një strukturë themelore të quajtur Node. 
 Ajo përfaqëson një nyje të listës së lidhur (linked list) dhe ka dy fusha kryesore:
 
-data: Ruan vlerën që dëshirojmë ta ruajmë. 
+~Data: Ruan vlerën që dëshirojmë ta ruajmë. 
 Në këtë implementim, kemi përdorur tipin int për thjeshtësi (por kjo mund të shndërrohet në një tip më abstrakt, sipas kërkesave të projektit).
-next: 
-Është një pointer që tregon tek nyja tjetër në listë. Kjo lidhje na lejon të ndërtojmë një zinxhir të nyjeve, duke krijuar një listë të lidhur ku 
+~Next: Është një pointer që tregon tek nyja tjetër në listë. Kjo lidhje na lejon të ndërtojmë një zinxhir të nyjeve, duke krijuar një listë të lidhur ku 
 çdo nyje lidhet me të tjerën.
 
 b. Klasa Stack
@@ -178,14 +177,14 @@ përditëson kryen duke e zgjedhur nyjen e mëposhtme dhe pastaj çlirohet hapë
 Ky operacion gjithashtu funksionon në O(1).
 
 
-top(): Kjo metodë kthen vlerën e elementit në krye pa e hequr. 
+~top(): Kjo metodë kthen vlerën e elementit në krye pa e hequr. 
 Ai kontrollon që stiva të mos jetë bosh, duke ndihmuar kështu në përdorimin e sigurt të këtyre vlerave.
 
 
-empty(): Kthen një vlerë booleane (true ose false) që tregon nëse stiva është bosh (p.sh., nëse pointer-i topNode është nullptr).
+~empty(): Kthen një vlerë booleane (true ose false) që tregon nëse stiva është bosh (p.sh., nëse pointer-i topNode është nullptr).
 
 
-print(): Kjo metodë përshkon lidhjet nga nyja e kryesë deri sa të mbërrijë në fund dhe afishon të dhënat, duke treguar renditjen nga krya (top) drejt fundit. 
+~print(): Kjo metodë përshkon lidhjet nga nyja e kryesë deri sa të mbërrijë në fund dhe afishon të dhënat, duke treguar renditjen nga krya (top) drejt fundit. 
 Ky operacion frymëzon konceptin LIFO,sepse elementët afishohen në rendin e kundërt të futjes së tyre.
 
 2. Arsyetimi Pas Zgjedhjes së Struktures
@@ -232,6 +231,7 @@ duke shqyrtuar vazhdimisht operacionet në mënyrë që operacionet që kërkojn
 Për shembull, pas shtimit të rezultateve nga operacionet e para, nëse shtohet edhe operandi “2” dhe më pas operacioni “*”, 
 bëhet pop për të marrë operandët, llogaritet 7 * 2 (duke përdorur rezultatin prej hapit të mëparshëm dhe operandin e ri), 
 dhe rezultati “14” pushohet në stivë.
+
 4).Rezultati Final: Pas përpunimit të gjithë elementëve të shprehjes, 
 stiva mbetet me vetëm një element, i cili jep rezultatin final të shprehjes. Në shembullin tonë, rezultati është 14.
 Ky përdorim i stivës është shumë i dobishëm pasi:
@@ -247,8 +247,9 @@ Kur haset një operator, stiva kryen pop() për të marrë operandët, zbatohet 
 Rezultati final i shprehjes ruhet në krye të stivës dhe merret me top()
 Ky proces e bën stivën zgjedhje ideale për zgjidhjen e problemeve që kërkojnë përpunimin e 
 të dhënave në një rend të caktuar, si p.sh., vlerësimi i shprehjeve postfix.
+
 ## VESHTIRESITE DHE TEJKALIMI I TYRE 
-1. Menaxhimi i Kujtesës Dinamike
+### Menaxhimi i Kujtesës Dinamike
 
 ***Vështirësitë:
 
@@ -266,7 +267,7 @@ kontrollohet nëse stiva është bosh. Kjo shmang përdorimin e pointer-eve të 
 2)Përdorimi i new dhe delete: Në metodën push(), përdorim new për të krijuar një nyje të re dhe, në metodën pop(), 
 përdorim delete për të çliruar kujtesën për nyjën e fshirë. Kjo siguron që secila nyje që krijohet të ndikojë në kujtesë vetëm deri sa të jetë e nevojshme.
 
-2. Përdorimi i Pointer-ave dhe Siguria e Aksesimit të të Dhënave
+### Përdorimi i Pointer-ave dhe Siguria e Aksesimit të të Dhënave
 ***
 Vështirësitë:
 
@@ -291,7 +292,7 @@ nëse stiva është bosh para se të kryejmë ndonjë operacion aksesi.
 3)Testimi i Gjithë Rastave të Ekzekutimit: Implementuam testime me skenarë të ndryshëm (si stiva bosh, radhët e operacioneve të ndryshme, etj.) 
 për të kapur çdo situatë ekstreme dhe për të siguruar që çdo gjë ndërtohet në mënyrë të sigurtë.
 
-3. Modulariteti dhe Organizimi i Kodit
+### Modulariteti dhe Organizimi i Kodit
 ***Vështirësitë:
 
 1)Ndërhyrja midis Modulave: Në një projekt të tillë, ndarja e funksioneve në module të pavarura 
@@ -314,7 +315,7 @@ dhe i kemi organizuar funksionet e saj (push, pop, top, empty, print) në mënyr
 4)Testimi i moderuar dhe integrimi i shembujve praktik: Në funksionin main() janë përfshirë shembuj praktikë që demonstrojnë mënyrën 
 se si se përdorin operacionet kryesore si push(), pop(), etj., duke garantuar kështu se struktura funksionon sipas pritshmërive.
 
-4. Integrimi në Zgjidhjen e Problemit Praktik: Vlerësimi i një Shprehjeje Postfix
+### Integrimi në Zgjidhjen e Problemit Praktik: Vlerësimi i një Shprehjeje Postfix
 
 ***Sfida:
 
